@@ -35,7 +35,7 @@ $('#toggle').stateButton({
 });
 ```
 
-The component can be configured using the markup API through the HTML `data-state-*` attributes, and those that have `data-toggle="state"` will be initialized automatically:
+The component can be configured through the markup API using the HTML `data-state-*` attributes. The buttons that have `data-toggle="state"` will be automatically initialized:
 ```html
 <button id="toggle"
         data-toggle="state"
