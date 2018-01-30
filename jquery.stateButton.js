@@ -1,5 +1,5 @@
 /*!
- * jQuery.stateButton: jQuery State Button v1.0.0.20180129
+ * jQuery.stateButton: jQuery State Button v1.0.0.20180130
  * https://github.com/aprofetb/jquery.stateButton
  * 
  * @requires jQuery v1.2 or above
@@ -50,12 +50,24 @@
       if (settings.inlineStyle[state])
         $button.css(settings.inlineStyle[state]);
     }
+    function refreshState($button) {
+      setState($button, getCurrentState($button));
+    }
 
     return this.each(function() {
       var $button = $(this);
 
+      var settings = getSettings($button);
+      if (settings) {
+        $.extend(settings, options);
+        refreshState($button);
+        return;
+      }
+
       var states = $button.data('state-values');
       states = states ? String(states).split(",") : ['true', 'false'];
+
+      var current = $button.data('state-current') || getFirstState($button);
 
       var text = {}, tooltip = {}, styleClass = {}, inlineStyle = {};
       $.each(states, function(i, state) {
@@ -65,23 +77,19 @@
         inlineStyle[state] = $button.data('state-style-' + state) || '';
       });
 
-      var current = $button.data('state-current') || getFirstState($button);
-      var clickCallback = $button.data('state-click-callback');
-
-      var defaults = {
+      var dataApi = {
         current       : current,       // current state
         states        : states,        // values that the state of the button can get
         text          : text,          // button text per state
         tooltip       : tooltip,       // button tooltip per state
         styleClass    : styleClass,    // button class per state
-        inlineStyle   : inlineStyle,   // button style per state
-        clickCallback : clickCallback  // button click callback function
+        inlineStyle   : inlineStyle    // button style per state
       };
 
-      var settings = $.extend(defaults, options);
+      settings = $.extend(dataApi, options);
       setSettings($button, settings);
+      refreshState($button);
 
-      setState($button, getCurrentState($button));
       $button.click(function() {
         var oldState = getCurrentState($button);
         var newState = getNextState($button);
@@ -92,5 +100,9 @@
     });
 
   };
+
+  $(document).ready(function() {
+    $('[data-toggle="state"]').stateButton();
+  });
 
 }(jQuery));
