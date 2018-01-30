@@ -35,17 +35,14 @@ $('#toggle').stateButton({
 });
 ```
 
-The component can be configured using the markup API through HTML data-state-* attributes:
+The component can be configured using the markup API through the HTML `data-state-*` attributes, and those that have `data-toggle="state"` will be initialized automatically:
 ```html
 <button id="toggle"
+        data-toggle="state"
         data-state-current="collapsed"
         data-state-values="collapsed,expanded"
         data-state-text-expanded="<i class='fa fa-minus-circle'></i> Collapse"
         data-state-text-collapsed="<i class='fa fa-plus-circle'></i> Expand"
         data-state-tooltip-expanded="Collapse all"
         data-state-tooltip-collapsed="Expand all"></button>
-```
-It is however an opt-in data-api, meaning you must initialize it yourself:
-```js
-$('#toggle').stateButton();
 ```
