@@ -28,6 +28,11 @@ $('#toggle').stateButton({
     "collapsed": {
       "color": "green"
     }
+  },
+  clickCallback: function(newState, oldState) {
+    console.log('button', this);
+    console.log('old state', oldState);
+    console.log('new state', newState);
   }
 });
 ```
