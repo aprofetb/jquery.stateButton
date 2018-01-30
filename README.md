@@ -2,9 +2,7 @@
 jQuery State Button is a plugin that turns a button into a multi-state switch.
 
 
-## Initialization
-
-#### Using JS:
+## Usage
 ```js
 $('#toggle').stateButton({
   values: [ "expanded", "collapsed" ],
@@ -37,7 +35,7 @@ $('#toggle').stateButton({
 });
 ```
 
-#### Using HTML data-state-* attributes:
+The component can be configured using the markup API through HTML data-state-* attributes:
 ```html
 <button id="toggle"
         data-state-current="collapsed"
@@ -46,4 +44,8 @@ $('#toggle').stateButton({
         data-state-text-collapsed="<i class='fa fa-plus-circle'></i> Expand"
         data-state-tooltip-expanded="Collapse all"
         data-state-tooltip-collapsed="Expand all"></button>
+```
+It is however an opt-in data-api, meaning you must initialize it yourself:
+```js
+$('#toggle').stateButton();
 ```
