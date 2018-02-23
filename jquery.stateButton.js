@@ -1,5 +1,5 @@
 /*!
- * jQuery.stateButton: jQuery State Button v1.0.0.20180130
+ * jQuery.stateButton: jQuery State Button v1.0.0.20180223
  * https://github.com/aprofetb/jquery.stateButton
  * 
  * @requires jQuery v1.2 or above
@@ -67,7 +67,7 @@
       var states = $button.data('state-values');
       states = states ? String(states).split(",") : ['true', 'false'];
 
-      var current = $button.data('state-current') || getFirstState($button);
+      var current = $button.data('state-current');
 
       var text = {}, tooltip = {}, styleClass = {}, inlineStyle = {};
       $.each(states, function(i, state) {
@@ -88,6 +88,8 @@
 
       settings = $.extend(dataApi, options);
       setSettings($button, settings);
+      if (settings.current === null || typeof settings.current === 'undefined')
+        settings.current = getFirstState($button);
       refreshState($button);
 
       $button.click(function() {
