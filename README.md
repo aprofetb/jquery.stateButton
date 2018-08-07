@@ -1,5 +1,5 @@
 # jquery.stateButton
-jQuery State Button is a plugin that turns a button into a multi-state switch.
+jQuery State Button is a plugin that turns a button into a multi-state switch. Here is a simple [demo](https://codepen.io/aprofetb/pen/yqRyJO).
 
 
 ## Usage
