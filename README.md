@@ -8,8 +8,8 @@ $('#toggle').stateButton({
   values: [ "expanded", "collapsed" ],
   current: "collapsed",
   text: {
-    "expanded" : "<i class='fa fa-minus-circle'><i/> Collapse",
-    "collapsed": "<i class='fa fa-plus-circle'><i/> Expand"
+    "expanded" : "<i class='fa fa-minus-circle'></i> Collapse",
+    "collapsed": "<i class='fa fa-plus-circle'></i> Expand"
   },
   tooltip: {
     "expanded" : "Collapse all",
